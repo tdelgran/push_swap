@@ -6,55 +6,55 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:53:20 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/21 14:13:35 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:11:40 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_list **src, t_list **dest)
+void	push_pa(t_list **src, t_list **dest)
 {
 	int	tmp;
 
 	if (*src == NULL)
         return ;
-	tmp = (*src)->content;
+	tmp = (*src)->data;
     delete_front(src);
     add_front(dest, tmp);
 }
 
-void	swap(t_list **lst)
+void	swap_sa(t_list **lst)
 {
     int	tmp;
 
     if (*lst == NULL || (*lst)->next == NULL)
         return ;
-    tmp = (*lst)->content;
-    (*lst)->content = (*lst)->next->content;
-    (*lst)->next->content = tmp;
+    tmp = (*lst)->data;
+    (*lst)->data = (*lst)->next->data;
+    (*lst)->next->data = tmp;
 }
 
-void	rotate(t_list **lst)
+void	rotate_ra(t_list **lst)
 {
     int	tmp;
 
 	if (*lst == NULL || (*lst)->next == NULL)
         return ;
-    tmp = (*lst)->content;
+    tmp = (*lst)->data;
     delete_front(lst);
     add_back(lst, tmp);
 }
 
-void	reverse(t_list **lst)
+void	reverse_rra(t_list **lst)
 {
     int	tmp;
 
     if (*lst == NULL || (*lst)->next == NULL)
         return ;
-    tmp = (*lst)->content;
+    tmp = (*lst)->data;
     while ((*lst)->next)
         *lst = (*lst)->next;
-    tmp = (*lst)->content;
+    tmp = (*lst)->data;
     delete_back(lst);
     add_front(lst, tmp);
 }

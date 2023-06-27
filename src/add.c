@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:08:49 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/21 14:20:37 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:11:28 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(int n)
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new->content = n;
+	new->data = n;
 	new->next = NULL;
 	return (new);
 }
