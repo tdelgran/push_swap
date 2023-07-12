@@ -6,55 +6,78 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:53:20 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/26 13:11:40 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:22:21 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push_pa(t_list **src, t_list **dest)
+void	ft_sa(t_list **stack)
 {
-	int	tmp;
-
-	if (*src == NULL)
-        return ;
-	tmp = (*src)->data;
-    delete_front(src);
-    add_front(dest, tmp);
+	if (*stack && (*stack)->next)
+	{
+		int temp = (*stack)->data;
+		(*stack)->data = (*stack)->next->data;
+		(*stack)->next->data = temp;
+		ft_putstr_fd("sa\n", 1);
+	}
 }
 
-void	swap_sa(t_list **lst)
+void	ft_pa(t_list **stack_a, t_list **stack_b)
 {
-    int	tmp;
-
-    if (*lst == NULL || (*lst)->next == NULL)
-        return ;
-    tmp = (*lst)->data;
-    (*lst)->data = (*lst)->next->data;
-    (*lst)->next->data = tmp;
+	if (*stack_b)
+	{
+		t_list *temp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		temp->next = *stack_a;
+		*stack_a = temp;
+		ft_putstr_fd("pa\n", 1);
+	}
 }
 
-void	rotate_ra(t_list **lst)
+void	ft_ra(t_list **stack)
 {
-    int	tmp;
+	t_list	*last;
+	t_list	*temp;
 
-	if (*lst == NULL || (*lst)->next == NULL)
-        return ;
-    tmp = (*lst)->data;
-    delete_front(lst);
-    add_back(lst, tmp);
+	if (!(*stack) || !(*stack)->next)
+		return ;
+	last = *stack;
+	temp = last->next;
+	while (last->next)
+		last = last->next;
+	last->next = *stack;
+	*stack = temp;
+	last->next->next = NULL;
+	ft_putstr_fd("ra\n", 1);
 }
 
-void	reverse_rra(t_list **lst)
+void    ft_rra(t_list **stack)
 {
-    int	tmp;
+	t_list	*temp;
+	int		i;
 
-    if (*lst == NULL || (*lst)->next == NULL)
-        return ;
-    tmp = (*lst)->data;
-    while ((*lst)->next)
-        *lst = (*lst)->next;
-    tmp = (*lst)->data;
-    delete_back(lst);
-    add_front(lst, tmp);
+	i = 0;
+	if (!(*stack) || !(*stack)->next)
+		return ;
+	temp = *stack;
+	while ((*stack)->next)
+	{
+		*stack = (*stack)->next;
+		i++;
+	}
+	(*stack)->next = temp;
+	while (i > 1)
+	{
+		temp = temp->next;
+		i--;
+	}
+	temp->next = NULL;
+	ft_putstr_fd("rra\n", 1);
+}
+
+void	ft_pb(t_list **stack_a, t_list **stack_b)
+{
+	ft_pa(stack_b, stack_a);
+	ft_putstr_fd("pb\n", 1);
 }

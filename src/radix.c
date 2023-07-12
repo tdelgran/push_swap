@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:11:45 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/26 11:31:45 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:22:43 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 		{
 			head_a = *stack_a;
 			if (((head_a->data >> i) & 1) == 0)
-				push_pa(stack_a, stack_b);
+				ft_pa(stack_a, stack_b);
 			else
-				rotate_ra(stack_a);
+				ft_ra(stack_a);
 		}
 		while (*stack_b)
-			push_pa(stack_b, stack_a);
+			ft_pa(stack_b, stack_a);
 		i++;
 	}
 }

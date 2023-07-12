@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 09:40:20 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/26 13:16:33 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:22:55 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,77 @@
 void	sort_2(t_list **lst)
 {
 	if ((*lst)->data > (*lst)->next->data)
-		swap_sa(lst);
+		ft_sa(lst);
 }
 
-void	sort_3(t_list **lst)
+int	sort_3_brut(t_list *stack)
 {
-	int a = (*lst)->data;
-	int b = (*lst)->next->data;
-	int c = (*lst)->next->next->data;
+	int a;
+	int b;
+	int c;
 
-	if (a < b && a < c)
-	{
-		if (b > c)
-			swap_sa(lst);
-	}
-	else if (b < a && b < c)
-	{
-		if (a > c)
-			swap_sa(lst);
-		reverse_rra(lst);
-	}
-	else if (c < a && c < b)
-	{
-		if (a < b)
-			swap_sa(lst);
-		rotate_ra(lst);
-	}
-}
-
-void	sort_4_5(t_list **lst, t_list **lst_b)
-{
-	int size;
-	int i;
-	int min_index;
-	
-	size = 0;
-	i = 0;
-	min_index = 0;
-	while (i++ < size)
-	{
-		if ((*lst)->data < (*lst)->next->data)
-			min_index = i;
-		rotate_ra(lst);
-	}
-	i = 0;
-	while (i++ < min_index)
-		reverse_rra(lst);
-	push_pa(lst, lst_b);
-	if (size == 4)
-		sort_3(lst);
+	a = stack->data;
+	b = stack->next->data;
+	c = stack->next->next->data;
+	if (a < b && a > c)
+		return (1);
+	else if (a < b && a < c)
+		return (2);
+	else if (a > b && a > c)
+		return (3);
+	else if (a > b && b > c)
+		return (4);
+	else if (a > b && a < c)
+		return (5);
 	else
-		sort_4_5(lst, lst_b);
-	push_pa(lst_b, lst);
+		return (0);
 }
+
+t_list	*sort_3(t_list *stack)
+{	
+	if (sort_3_brut(stack) == 1)
+		ft_rra(&stack);
+	else if (sort_3_brut(stack) ==  2)
+	{
+		ft_sa(&stack);
+		ft_ra(&stack);
+	}
+	else if (sort_3_brut(stack) ==  3)
+		ft_ra(&stack);
+	else if (sort_3_brut(stack) ==  4)
+	{
+		ft_sa(&stack);
+		ft_rra(&stack);
+	}
+	else if (sort_3_brut(stack) ==  5)
+		ft_sa(&stack);
+	return (stack);
+}
+
+
+
+// void	sort_4_5(t_list *lst, t_list **lst_b)
+// {
+// 	int size;
+// 	int i;
+// 	int min_index;
+	
+// 	size = 0;
+// 	i = 0;
+// 	min_index = 0;
+// 	while (i++ < size)
+// 	{
+// 		if ((*lst)->data < (*lst)->next->data)
+// 			min_index = i;
+// 		rotate_ra(lst);
+// 	}
+// 	i = 0;
+// 	while (i++ < min_index)
+// 		reverse_rra(lst);
+// 	push_pa(lst, lst_b);
+// 	if (size == 4)
+// 		sort_3(lst);
+// 	else
+// 		sort_4_5(lst, lst_b);
+// 	push_pa(lst_b, lst);
+// }

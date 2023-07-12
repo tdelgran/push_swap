@@ -6,7 +6,7 @@
 /*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:15:16 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/26 11:28:28 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:39:46 by tdelgran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,50 @@ void	print_stack(t_list *stack)
 	}
 }
 
+int	is_sort(t_list *stack_a)
+{
+	if (!stack_a || !stack_a->next)
+		return (1);
+	if (stack_a->data > stack_a->next->data)
+		return (0);
+	return (is_sort(stack_a->next));
+}
+
+void	check(t_list *stack_a, t_list *stack_b)
+{
+	int i;
+
+	i = 0;
+	if (is_sort(stack_a))
+		return ;
+	if (i == 3)
+	{
+		sort_3(&stack_a);
+	}
+	// else if (i == 4)
+	// {
+	// 	sort_4(stack_a, stack_b);
+	// }
+	// else if (i == 5)
+	// {
+	// 	sort_5(stack_a, stack_b);
+	// }
+	// else
+	// {
+	// 	radix_sort(stack_a, stack_b);
+	// }
+}
+
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
+	t_list	*stack_a = NULL;
 	t_list	*stack_b = NULL;
 
-	if (argc < 2)
-	{
-		ft_putendl_fd("Error: Not enough arguments.", 1);
-		return (1);
-	}
-	stack_a = parse_args(argc, argv);
-	if (!stack_a)
-	{
-		ft_putendl_fd("Error: Invalid argument.", 1);
-		return (1);
-	}
 	ft_putendl_fd("Initial stacks:", 1);
 	print_stack(stack_a);
-	if (ft_lstsize(stack_a) <= 2)
-		sort_2(&stack_a);
-	else if (ft_lstsize(stack_a) <= 3)
-		sort_3(&stack_a);
-	else if (ft_lstsize(stack_a) <= 5)
-		sort_4_5(&stack_a, &stack_b);
-	else
-		radix_sort(&stack_a, &stack_b);
+	check(&stack_a, &stack_b);
 	ft_putendl_fd("Final stacks:", 1);
 	print_stack(stack_a);
-	ft_lstclear(&stack_a);
-	ft_lstclear(&stack_b);
     return (0);
 }
 
