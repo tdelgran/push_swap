@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 12:51:16 by tdelgran          #+#    #+#              #
-#    Updated: 2023/06/26 10:19:57 by tdelgran         ###   ########.fr        #
+#    Updated: 2023/07/28 17:40:20 by theodelgran      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRC =	src/add.c \
 		src/push_swap.c \
 		src/radix.c \
 		src/sort.c \
+		src/sort_4.c \
+		src/sort_5.c \
 		src/utils.c \
 
 OBJ = $(SRC:.c=.o)

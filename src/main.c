@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:15:16 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/12 09:39:46 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/28 18:00:16 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,35 @@ void	check(t_list *stack_a, t_list *stack_b)
 {
 	int i;
 
-	i = 0;
+	i = ft_lstsize(stack_a);
 	if (is_sort(stack_a))
 		return ;
-	if (i == 3)
-	{
-		sort_3(&stack_a);
-	}
-	// else if (i == 4)
-	// {
-	// 	sort_4(stack_a, stack_b);
-	// }
-	// else if (i == 5)
-	// {
-	// 	sort_5(stack_a, stack_b);
-	// }
-	// else
-	// {
-	// 	radix_sort(stack_a, stack_b);
-	// }
+	if (i == 2)
+		stack_a = sort_2(stack_a);
+	else if (i == 3)
+		stack_a = sort_3(stack_a);
+	else if (i == 4)
+		stack_a = sort_4(&stack_a, &stack_b);
+	else if (i == 5)
+		stack_a = sort_5(&stack_a, &stack_b);
+	else
+	 	radix_sort(&stack_a, &stack_b);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a = NULL;
-	t_list	*stack_b = NULL;
-
-	ft_putendl_fd("Initial stacks:", 1);
-	print_stack(stack_a);
-	check(&stack_a, &stack_b);
-	ft_putendl_fd("Final stacks:", 1);
-	print_stack(stack_a);
+	t_list	*stack_a;
+	t_list	*stack_b;
+	
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (0);
+	stack_a = parse_args(argc, argv);
+	//print_stack(stack_a);
+	check(stack_a, stack_b);
     return (0);
 }
+
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:11:45 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/12 09:22:43 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:59:48 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

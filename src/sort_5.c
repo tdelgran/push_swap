@@ -1,56 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   sort_5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 12:55:19 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/28 14:54:27 by theodelgran      ###   ########.fr       */
+/*   Created: 2023/07/28 17:36:10 by theodelgran       #+#    #+#             */
+/*   Updated: 2023/07/28 17:38:58 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	is_number(char *str)
+t_list  *sort_5(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-
-	if (str[0] == '+' || str[0] == '-')
-		i = 1;
-	else
-		i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+    push_min(stack_a, stack_b);
+    push_min(stack_a, stack_b);
+    sort_3(*stack_a);
+    ft_pa(stack_a, stack_b);
+    ft_pa(stack_a, stack_b);
+    print_stack(*stack_a);
+    return (*stack_a);
 }
-
-t_list	*parse_args(int argc, char **argv)
-{
-	t_list	*lst;
-	int		i;
-
-	lst = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_number(argv[i]))
-		{
-			ft_lstclear(&lst);
-			return (NULL);
-		}
-		add_back(&lst, ft_atoi(argv[i]));
-		i++;
-	}
-	return (lst);
-}
-
-
-
-
-
-

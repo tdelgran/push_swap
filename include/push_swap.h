@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:55:38 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/12 08:54:45 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:40:42 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,18 @@ void	ft_sa(t_list **stack);
 void	ft_pa(t_list **stack_a, t_list **stack_b);
 void	ft_ra(t_list **stack);
 void	ft_rra(t_list **stack);
+void	ft_pb(t_list **stack_a, t_list **stack_b);
 void	ft_lstclear(t_list **lst);
 void	radix_sort(t_list **stack_a, t_list **stack_b);
 void	print_stack(t_list *stack);
 
 /*TRI*/
-void	sort_2(t_list **lst);
+t_list	*sort_2(t_list *stack);
 t_list	*sort_3(t_list *stack);
-void	sort_4_5(t_list **lst, t_list **lst_b);
+t_list  *sort_4(t_list **stack_a, t_list **stack_b);
+t_list  *sort_5(t_list **stack_a, t_list **stack_b);
+void    push_min(t_list **stack_a, t_list **stack_b);
+int find_min(t_list *stack);
 
 /*FONCTIONS UTILS*/
 int	ft_atoi(const char *str);

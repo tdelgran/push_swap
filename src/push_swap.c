@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 12:53:20 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/12 09:22:21 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:32:51 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	ft_sa(t_list **stack)
 {
+	int	temp;
+	
+	temp = (*stack)->data;
 	if (*stack && (*stack)->next)
 	{
-		int temp = (*stack)->data;
 		(*stack)->data = (*stack)->next->data;
 		(*stack)->next->data = temp;
 		ft_putstr_fd("sa\n", 1);
@@ -25,9 +27,11 @@ void	ft_sa(t_list **stack)
 
 void	ft_pa(t_list **stack_a, t_list **stack_b)
 {
+	t_list	*temp;
+	
 	if (*stack_b)
 	{
-		t_list *temp = *stack_b;
+		temp = *stack_b;
 		*stack_b = (*stack_b)->next;
 		temp->next = *stack_a;
 		*stack_a = temp;
@@ -78,6 +82,14 @@ void    ft_rra(t_list **stack)
 
 void	ft_pb(t_list **stack_a, t_list **stack_b)
 {
-	ft_pa(stack_b, stack_a);
-	ft_putstr_fd("pb\n", 1);
+	t_list	*temp;
+	
+	if (*stack_a)
+	{
+		temp = *stack_a;
+		*stack_a = (*stack_a)->next;
+		temp->next = *stack_b;
+		*stack_b = temp;
+		ft_putstr_fd("pb\n", 1);
+	}
 }
