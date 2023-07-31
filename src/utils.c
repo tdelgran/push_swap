@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdelgran <tdelgran@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 09:47:43 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/06/26 10:59:45 by tdelgran         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:59:50 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,4 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, &*s, 1);
 		s++;
 	}
-}
-
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	write (fd, "\n", 1);
 }

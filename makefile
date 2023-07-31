@@ -6,7 +6,7 @@
 #    By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 12:51:16 by tdelgran          #+#    #+#              #
-#    Updated: 2023/07/28 17:40:20 by theodelgran      ###   ########.fr        #
+#    Updated: 2023/07/31 12:00:32 by theodelgran      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC =	src/add.c \
 		src/sort_4.c \
 		src/sort_5.c \
 		src/utils.c \
+		src/utils2.c \
 
 OBJ = $(SRC:.c=.o)
 

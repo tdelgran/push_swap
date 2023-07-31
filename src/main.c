@@ -6,7 +6,7 @@
 /*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 14:15:16 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/28 18:00:16 by theodelgran      ###   ########.fr       */
+/*   Updated: 2023/07/31 18:29:00 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack_a = parse_args(argc, argv);
-	//print_stack(stack_a);
 	check(stack_a, stack_b);
+	//system("leaks push_swap");
     return (0);
 }
 

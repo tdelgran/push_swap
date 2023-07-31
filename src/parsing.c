@@ -6,11 +6,36 @@
 /*   By: theodelgrange <theodelgrange@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:55:19 by tdelgran          #+#    #+#             */
-/*   Updated: 2023/07/28 14:54:27 by theodelgran      ###   ########.fr       */
+/*   Updated: 2023/07/31 12:16:36 by theodelgran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_free_str(char **str)
+{
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]); // libère chaque chaîne de caractères individuelle
+		i++;
+	}
+	free(str); // libère le tableau lui-même
+}
 
 int	is_number(char *str)
 {
@@ -21,33 +46,65 @@ int	is_number(char *str)
 	else
 		i = 0;
 	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i++]))
 			return (0);
-		i++;
-	}
 	return (1);
+}
+
+int	is_duplicate(t_list *lst, int value)
+{
+	while (lst)
+		if (lst->data == value)
+			return (1);
+		else
+			lst = lst->next;
+	return (0);
+}
+
+void	print_error_and_clear(t_list **lst, char *message)
+{
+	ft_lstclear(lst);
+	ft_putendl_fd(message, 2);
+}
+
+static void	handle_error(t_list **lst, char ***numbers, char *msg)
+{
+	print_error_and_clear(lst, msg);
+	ft_free_str(*numbers); 
 }
 
 t_list	*parse_args(int argc, char **argv)
 {
 	t_list	*lst;
 	int		i;
+	int		value;
+	char	**numbers;
+	int		j;
 
 	lst = NULL;
 	i = 1;
-	while (i < argc)
+	while (i < argc && (numbers = ft_split(argv[i], ' ')))
 	{
-		if (!is_number(argv[i]))
+		j = 0;
+		while (numbers[j])
 		{
-			ft_lstclear(&lst);
-			return (NULL);
+			if (!is_number(numbers[j]))
+				return (handle_error(&lst, &numbers, "Error: Non-number argument"), NULL);
+			value = ft_atoi(numbers[j]);
+			if (is_duplicate(lst, value))
+				return (handle_error(&lst, &numbers, "Error: Duplicate numbers not allowed"), NULL);
+			add_back(&lst, value);
+			j++;
 		}
-		add_back(&lst, ft_atoi(argv[i]));
+		ft_free_str(numbers);
 		i++;
 	}
 	return (lst);
 }
+
+
+
+
 
 
 
